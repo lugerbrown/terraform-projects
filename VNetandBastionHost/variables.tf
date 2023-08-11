@@ -1,13 +1,13 @@
 variable "resourcegroup_name" {
   type        = string
   description = "The name of the resource group"
-  default     = "<resouce group name>"
+  default     = "TerrformVnetsAndBastionLabRG"
 }
 
 variable "location" {
   type        = string
   description = "The region for the deployment"
-  default     = "<region>"
+  default     = "westeurope"
 }
 
 variable "tags" {
@@ -15,14 +15,14 @@ variable "tags" {
   description = "Tags used for the deployment"
   default = {
     "Environment" = "Lab"
-    "Owner"       = "<name>"
+    "Owner"       = "LGM"
   }
 }
 
 variable "vnet_name" {
   type        = string
   description = "The name of the vnet"
-  default     = "<vnet name>"
+  default     = "vnt-terraform-lab"
 }
 
 variable "vnet_address_space" {
@@ -45,10 +45,9 @@ variable "subnets" {
     subnet_3 = {
       name             = "subnet_3"
       address_prefixes = ["10.13.3.0/24"]
-    }
-    # The name must be AzureBastionSubnet
+    }    
     bastion_subnet = {
-      name             = "AzureBastionSubnet"
+      name             = "AzureBastionSubnet" # The name must be AzureBastionSubnet
       address_prefixes = ["10.13.250.0/24"]
     }
   }
@@ -57,5 +56,5 @@ variable "subnets" {
 variable "bastionhost_name" {
   type        = string
   description = "The name of the basion host"
-  default     = "<bastion host name>"
+  default     = "lab-bastion"
 }

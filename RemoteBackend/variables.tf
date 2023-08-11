@@ -8,6 +8,10 @@ variable "rsgname" {
   type = string
   description = "Resouce Group name"
 }
+variable "remotestatersgname" {
+  type = string
+  description = "Remote state Resouce Group name"
+}
 
 variable "stgactname" {
   type = string

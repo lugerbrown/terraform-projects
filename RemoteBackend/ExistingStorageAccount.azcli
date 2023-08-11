@@ -1,0 +1,18 @@
+$RESOURCE_GROUP_NAME='commonStorageAccountRG'
+$STORAGE_ACCOUNT_NAME="exampleStorageAccount10032002c09d9c01"
+$CONTAINER_NAME='terraformstate'
+
+az storage container create --name $CONTAINER_NAME --account-name $STORAGE_ACCOUNT_NAME
+
+#Get the storage access key and store it as an environment variable
+$ACCOUNT_KEY=$(az storage account keys list --resource-group $RESOURCE_GROUP_NAME --account-name $STORAGE_ACCOUNT_NAME --query '[0].value' -o tsv) 
+$env:ARM_ACCESS_KEY=$ACCOUNT_KEY
+
+
+# this is how it should look like in the main.tf file
+backend "azurerm" {
+    resource_group_name  = "commonStorageAccountRG"
+    storage_account_name = "exampleStorageAccount10032002c09d9c01"
+    container_name       = "terraformstate"
+    key                  = "terraform.terraformstate" # name of the file inside the container in the storage account
+}

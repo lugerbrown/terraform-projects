@@ -1,6 +1,9 @@
 # TerraformExamples
 Repo for Terraform Examples from the YouTube channel
 
+# Terraform Documentation
+here the [link](https://registry.terraform.io/providers/hashicorp/azurerm/) to the current used provider
+
 ## ModuleExample 
 Example for creating modules and outputs
 

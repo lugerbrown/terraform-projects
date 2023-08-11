@@ -14,9 +14,9 @@ variable "vnetrg" {
   description = "The name of the VNet Resource Group"
 }
 
-#VMVare
+#Virtual Machine Vars
 variable "adminpw" {
   type = string
-  sensitive = true
+  sensitive = true //avoids showing the password in the console.
   description = "the local admin password, must be 12 char or longer"
 }

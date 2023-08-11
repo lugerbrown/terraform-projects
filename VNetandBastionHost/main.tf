@@ -1,13 +1,13 @@
 terraform {
   required_providers {
     azurerm = {
-      source  = "hashicorp/azurerm"
-      version = "2.88.1"
+      source = "hashicorp/azurerm"
+      version = "3.68.0"
     }
   }
 }
 
-provider "azurerm" {
+provider "azurerm" {  
   features {}
 }
 
@@ -27,10 +27,10 @@ resource "azurerm_virtual_network" "vnet" {
 
 resource "azurerm_subnet" "subnet" {
   for_each = var.subnets
-  resource_group_name  = var.resourcegroup_name
-  virtual_network_name = azurerm_virtual_network.vnet.name
-  name                 = each.value["name"]
-  address_prefixes     = each.value["address_prefixes"]
+    resource_group_name  = var.resourcegroup_name
+    virtual_network_name = azurerm_virtual_network.vnet.name
+    name                 = each.value.name
+    address_prefixes     = each.value.address_prefixes
 }
 
 resource "azurerm_public_ip" "bastion_pubip" {
